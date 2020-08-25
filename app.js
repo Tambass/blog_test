@@ -5,13 +5,13 @@ const morgan = require("morgan");
 const exphbs = require("express-handlebars");
 const passport = require("passport");
 const session = require("express-session");
-const connectDB = require("./config/db");
+const connectDB = require("./configs/db");
 
 // Load config
 dotenv.config({ path: "./config/config.env" });
 
 // Passport config
-require("./config/passport")(passport);
+require("./configs/passport")(passport);
 
 connectDB();
 
