@@ -23,8 +23,8 @@ router.post("/", ensureAuth, async (req, res) => {
   }
 });
 
-// @desc   Show all stories
-// @route  GET  /stories
+// @desc    Show all stories
+// @route   GET /stories
 router.get("/", ensureAuth, async (req, res) => {
   try {
     const stories = await Story.find({ status: "public" })
@@ -32,11 +32,11 @@ router.get("/", ensureAuth, async (req, res) => {
       .sort({ createdAt: "desc" })
       .lean();
 
-    res.render("/stories/index", {
+    res.render("stories/index", {
       stories,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.render("error/500");
   }
 });
